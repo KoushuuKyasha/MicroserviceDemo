@@ -10,7 +10,7 @@
         }
       ],
       "UpstreamPathTemplate": "/api/hello/{url}",
-      "UpstreamHttpMethod": [ "Get" ]
+      "UpstreamHttpMethod": [ "Get", "Options" ]
     }
   ],
   "GlobalConfiguration": {

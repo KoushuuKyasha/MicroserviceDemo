@@ -6,7 +6,13 @@ namespace MicroserviceDemo.IdentityServer
     public static class DemoData
     {
         public static IEnumerable<ApiResource> Apis
-            => new List<ApiResource>();
+            => new List<ApiResource>
+            {
+                new ApiResource("hello_api", "Hello API")
+                {
+                    ApiSecrets = { new Secret("secret".Sha256()) }
+                }
+            };
 
         public static IEnumerable<IdentityResource> IdentityResources
             => new List<IdentityResource>
@@ -17,20 +23,22 @@ namespace MicroserviceDemo.IdentityServer
             };
         public static IEnumerable<Client> Clients
             => new List<Client>
-               {
-                    new Client
-                    {
-                        ClientId = "implicit",
-                        ClientName = "Implicit Client",
-                        AllowAccessTokensViaBrowser = true,
+            {
+                new Client
+                {
+                    ClientId = "implicit.shortlived",
+                    ClientName = "Demo SPA Client",
+                    AllowAccessTokensViaBrowser = true,
+                    AllowedCorsOrigins = { "http://localhost:5005" },
 
-                        RedirectUris = { "http://localhost:5001/signin-idsrv" },
-                        PostLogoutRedirectUris = { "http://localhost:5001/signout-callback-idsrv" },
-                        FrontChannelLogoutUri = "http://localhost:5001/signout-idsrv",
+                    AccessTokenLifetime = 70,
 
-                        AllowedGrantTypes = GrantTypes.Implicit,
-                        AllowedScopes = { "openid", "profile", "email", "api" },
-                    },
+                    RedirectUris = { "http://localhost:5005" },
+                    PostLogoutRedirectUris = { "https://notused" },
+
+                    AllowedGrantTypes = GrantTypes.Implicit,
+                    AllowedScopes = { "openid", "profile", "email", "hello_api" },
+                }
             };
     }
 }

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using System;
 
 namespace MicroserviceDemo.HelloService.Controllers
@@ -8,8 +10,9 @@ namespace MicroserviceDemo.HelloService.Controllers
     public class MessageController : ControllerBase
     {
         [HttpGet("")]
-        [ProducesResponseType(200, Type = typeof(string))]
-        public ActionResult<string> Index()
+        [Produces("text/plain"), ProducesResponseType(200, Type = typeof(string))]
+        [Authorize, EnableCors("SPAClient")]
+        public ActionResult<string> Hello()
         {
             return $"Hello from .NET Core Service at {DateTime.Now}";
         }
