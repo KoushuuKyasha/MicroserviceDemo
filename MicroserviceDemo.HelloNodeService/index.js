@@ -12,15 +12,9 @@ const issuer = 'http://msdemo.henryhc.net:5001';
 
 // define authentication middleware
 const auth = jwt({
-    secret: jwksClient.expressJwtSecret({
-        cache: true,        // see https://github.com/auth0/node-jwks-rsa#caching
-        rateLimit: true,    // see https://github.com/auth0/node-jwks-rsa#rate-limiting
-    }),
-
     // validate the audience & issuer from received token vs JWKS endpoint
     audience: 'hello_api',
-    issuer: issuer,
-    algorithms: ['RS256']
+    issuer: issuer
 });
 
 app.get('/api/message',
