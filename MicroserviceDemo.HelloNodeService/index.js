@@ -16,7 +16,7 @@ const auth = jwt({
         cache: true,        // see https://github.com/auth0/node-jwks-rsa#caching
         rateLimit: true,    // see https://github.com/auth0/node-jwks-rsa#rate-limiting
         jwksRequestsPerMinute: 2,
-        jwksUri: 'http://identityserver/.well-known/openid-configuration/jwks'
+        jwksUri: 'http://identity_server_1/.well-known/openid-configuration/jwks'
     }),
     algorithms: ['RS256'],
 
