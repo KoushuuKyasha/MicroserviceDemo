@@ -5,12 +5,12 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5003
+          "Host": "microservicedemo_dotnet_service_1",
+          "Port": 80
         },
         {
-          "Host": "localhost",
-          "Port": 5004
+          "Host": "microservicedemo_node_service_1",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/hello/{url}",
@@ -21,6 +21,6 @@
     }
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:5002"
+    "BaseUrl": "http://msdemo.henryhc.net:5002"
   }
 }

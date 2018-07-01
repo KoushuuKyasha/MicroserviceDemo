@@ -26,7 +26,7 @@ namespace MicroserviceDemo.HelloService
                 options =>
                 {
                     // base-address of your identityserver
-                    options.Authority = "http://localhost:5001";
+                    options.Authority = "http://msdemo.henryhc.net:5001";
                     options.RequireHttpsMetadata = false;
                     // name of the API resource
                     options.ApiName = "hello_api";

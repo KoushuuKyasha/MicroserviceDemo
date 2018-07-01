@@ -1,0 +1,52 @@
+version: "3.4"
+
+services: 
+  identity_server:
+    image: microservicedemo/identityserver:${TAG:-latest}
+    ports:
+      - "5001:80"
+    build:
+      context: MicroserviceDemo.IdentityServer/
+      dockerfile: Dockerfile
+    networks: 
+      - microservice_demonet
+
+  api_gateway:
+    image: microservicedemo/api_gateway:${TAG:-latest}
+    ports:
+      - "5002:80"
+    build:
+      context: MicroserviceDemo.ApiGateway/
+      dockerfile: Dockerfile
+    networks: 
+      - microservice_demonet
+      
+  
+  dotnet_service:
+    image: microservicedemo/dotnet_service:${TAG:-latest}
+    build:
+      context: MicroserviceDemo.HelloService/
+      dockerfile: Dockerfile
+    networks: 
+      - microservice_demonet
+
+  node_service:
+    image: microservicedemo/node_service:${TAG:-latest}
+    build:
+      context: MicroserviceDemo.HelloNodeService/
+      dockerfile: Dockerfile
+    networks: 
+      - microservice_demonet
+  
+  spa_client:
+    image: microservicedemo/spa_client:${TAG:-latest}
+    ports: 
+      - "5005:80"
+    build:
+      context: MicroserviceDemo.SpaClient/
+      dockerfile: Dockerfile
+    networks: 
+      - microservice_demonet
+
+networks: 
+  microservice_demonet:

@@ -4,9 +4,9 @@ EXPOSE 80
 
 FROM microsoft/dotnet:2.1-sdk AS build
 WORKDIR /src
-COPY MicroserviceDemo.HelloService/MicroserviceDemo.HelloService.csproj MicroserviceDemo.HelloService/
+COPY MicroserviceDemo.HelloService.csproj MicroserviceDemo.HelloService/
 RUN dotnet restore MicroserviceDemo.HelloService/MicroserviceDemo.HelloService.csproj
-COPY . .
+COPY . /src/MicroserviceDemo.HelloService
 WORKDIR /src/MicroserviceDemo.HelloService
 RUN dotnet build MicroserviceDemo.HelloService.csproj -c Release -o /app
 

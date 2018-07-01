@@ -4,9 +4,9 @@ EXPOSE 80
 
 FROM microsoft/dotnet:2.1-sdk AS build
 WORKDIR /src
-COPY MicroserviceDemo.ApiGateway/MicroserviceDemo.ApiGateway.csproj MicroserviceDemo.ApiGateway/
+COPY MicroserviceDemo.ApiGateway.csproj MicroserviceDemo.ApiGateway/
 RUN dotnet restore MicroserviceDemo.ApiGateway/MicroserviceDemo.ApiGateway.csproj
-COPY . .
+COPY . /src/MicroserviceDemo.ApiGateway
 WORKDIR /src/MicroserviceDemo.ApiGateway
 RUN dotnet build MicroserviceDemo.ApiGateway.csproj -c Release -o /app
 

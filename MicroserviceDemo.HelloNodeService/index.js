@@ -8,7 +8,7 @@ let cors = require('cors');
 const app = express();
 app.use(cors());
 
-const issuer = 'http://localhost:5001';
+const issuer = 'http://msdemo.henryhc.net:5001';
 
 // define authentication middleware
 const auth = jwt({
@@ -33,4 +33,4 @@ app.get('/api/message',
         res.send('Hello from Node.js Service at ' + now);
     });
 
-app.listen(5004, 'localhost', () => console.log('Listening on http://localhost:5004'));
+app.listen(80, '0.0.0.0', () => console.log('Listening on http://localhost:80'));

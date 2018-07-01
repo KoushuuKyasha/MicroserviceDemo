@@ -4,9 +4,9 @@ EXPOSE 80
 
 FROM microsoft/dotnet:2.1-sdk AS build
 WORKDIR /src
-COPY MicroserviceDemo.IdentityServer/MicroserviceDemo.IdentityServer.csproj MicroserviceDemo.IdentityServer/
+COPY MicroserviceDemo.IdentityServer.csproj MicroserviceDemo.IdentityServer/
 RUN dotnet restore MicroserviceDemo.IdentityServer/MicroserviceDemo.IdentityServer.csproj
-COPY . .
+COPY . /src/MicroserviceDemo.IdentityServer/
 WORKDIR /src/MicroserviceDemo.IdentityServer
 RUN dotnet build MicroserviceDemo.IdentityServer.csproj -c Release -o /app
 
