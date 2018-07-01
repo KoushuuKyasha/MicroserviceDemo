@@ -9,7 +9,8 @@ RUN curl -SL "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-lin
     && echo "$NODE_DOWNLOAD_SHA nodejs.tar.gz" | sha256sum -c - \
     && tar -xzf "nodejs.tar.gz" -C /usr/local --strip-components=1 \
     && rm nodejs.tar.gz \
-    && ln -s /usr/local/bin/node /usr/local/bin/nodejs
+    && ln -s /usr/local/bin/node /usr/local/bin/nodejs \
+    && npm i npm@latest -g
 WORKDIR /src
 COPY MicroserviceDemo.SpaClient.csproj MicroserviceDemo.SpaClient/
 RUN dotnet restore MicroserviceDemo.SpaClient/MicroserviceDemo.SpaClient.csproj
