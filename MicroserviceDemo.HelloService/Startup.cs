@@ -37,7 +37,7 @@ namespace MicroserviceDemo.HelloService
                 options.AddPolicy("SPAClient",
                     builder =>
                     {
-                        builder.WithOrigins("http://localhost:5005")
+                        builder.WithOrigins("http://msdemo.henryhc.net:5005")
                         .AllowAnyMethod()
                         .AllowAnyHeader();
                     });

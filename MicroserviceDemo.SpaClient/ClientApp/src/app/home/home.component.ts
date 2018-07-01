@@ -24,7 +24,7 @@ export class HomeComponent {
       "Authorization": "Bearer " + this.oauthService.getAccessToken()
     });
 
-    this.httpClient.get<string>("http://msdemo.henryhc.net:5001/api/hello/message",
+    this.httpClient.get<string>("http://msdemo.henryhc.net:5002/api/hello/message",
       {
         headers: headers,
         responseType: 'text' as 'json'
