@@ -15,8 +15,6 @@ const auth = jwt({
     secret: jwksClient.expressJwtSecret({
         cache: true,        // see https://github.com/auth0/node-jwks-rsa#caching
         rateLimit: true,    // see https://github.com/auth0/node-jwks-rsa#rate-limiting
-        jwksRequestsPerMinute: 2,
-        jwksUri: `${issuer}/.well-known/openid-configuration/jwks`
     }),
 
     // validate the audience & issuer from received token vs JWKS endpoint

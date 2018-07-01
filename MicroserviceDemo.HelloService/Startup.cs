@@ -22,14 +22,14 @@ namespace MicroserviceDemo.HelloService
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddIdentityServerAuthentication(JwtBearerDefaults.AuthenticationScheme,
+                .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme,
                 options =>
                 {
                     // base-address of your identityserver
                     options.Authority = "http://msdemo.henryhc.net:5001";
                     options.RequireHttpsMetadata = false;
                     // name of the API resource
-                    options.ApiName = "hello_api";
+                    options.Audience = "hello_api";
                 });
 
             services.AddCors(options =>
