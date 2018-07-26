@@ -2,6 +2,7 @@ sudo: required
 services:
 - docker
 before_script:
+- mkdir /etc/docker/ -p
 - touch /etc/docker/daemon.json
 - echo "{\"insecure-registries\":[\"${DOCKER_SERVER}\"]}" > /etc/docker/daemon.json
 - systemctl docker restart
