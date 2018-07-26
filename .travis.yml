@@ -1,19 +1,22 @@
 sudo: required
 services:
-  - docker
-
+- docker
 script:
-  - docker-compose build
-
+- docker-compose build
 deloy:
-  - echo "$DOCKER_PASSWORD" | docker login $DOCKER_SERVER -u "$DOCKER_USERNAME" --password-stdin
-  - docker tag microservicedemo/identityserver $DOCKER_SERVER/microservicedemo/identityserver
-  - docker push $DOCKER_SERVER/microservicedemo/identityserver
-  - docker tag microservicedemo/api_gateway $DOCKER_SERVER/microservicedemo/api_gateway
-  - docker push $DOCKER_SERVER/microservicedemo/api_gateway
-  - docker tag microservicedemo/dotnet_service $DOCKER_SERVER/microservicedemo/dotnet_service
-  - docker push $DOCKER_SERVER/microservicedemo/dotnet_service
-  - docker tag microservicedemo/node_service $DOCKER_SERVER/microservicedemo/node_service
-  - docker push $DOCKER_SERVER/microservicedemo/node_service
-  - docker tag microservicedemo/spa_client $DOCKER_SERVER/microservicedemo/spa_client
-  - docker push $DOCKER_SERVER/microservicedemo/spa_client
+- echo "$DOCKER_PASSWORD" | docker login $DOCKER_SERVER -u "$DOCKER_USERNAME" --password-stdin
+- docker tag microservicedemo/identityserver $DOCKER_SERVER/microservicedemo/identityserver
+- docker push $DOCKER_SERVER/microservicedemo/identityserver
+- docker tag microservicedemo/api_gateway $DOCKER_SERVER/microservicedemo/api_gateway
+- docker push $DOCKER_SERVER/microservicedemo/api_gateway
+- docker tag microservicedemo/dotnet_service $DOCKER_SERVER/microservicedemo/dotnet_service
+- docker push $DOCKER_SERVER/microservicedemo/dotnet_service
+- docker tag microservicedemo/node_service $DOCKER_SERVER/microservicedemo/node_service
+- docker push $DOCKER_SERVER/microservicedemo/node_service
+- docker tag microservicedemo/spa_client $DOCKER_SERVER/microservicedemo/spa_client
+- docker push $DOCKER_SERVER/microservicedemo/spa_client
+env:
+  matrix:
+  - secure: Y6yYxv494Xvxk1QYNSfefI66uzpDU9ElJPpdId2I2+0r6SLRLOjR1JrX3TwEg41yHlbatvwWEWx7adnkp7iFFHdQmvTUNwoCO0HuVBDxKFpsX+kCiJzkRkBTO1b1rdB0rD+xAOO1iDKniE0Le5TyONVUN2YoWdLAlk4kdrX6GpJKp3sDssinE3sbk3TR1EPm9+IUUcYiK327CVtL5bZs00Z2Sqmq307jyzi+GiUKD8l5xhcjdn00CMQ4sUC3Q6MP5qcVnMQuALhbCZJ0pfWDEX2k+crTQFCixVEckFrb/UJIHmS0V6KjQanjl53k+vv5oowevVRZfULMgD+sEeJCWKsuXFfKlG0ptPzGHUqSJTcORj8kJfgxYKrN40GkwilrL+XkjhUNsSpsf159bgYgzWJwbPGmoWo7JgELPibmY4wTecx7xtPoD0vQJlBQRPdi+npeV5ClkdcRK55qZFcupNmWl900XyTK839WJKYTtdvf3c5OZqJO2kWqiB1SKMTE8ky2OInqIFaLEUMO5ZM7MZ1tB5+cwEvkSM+P3CGmOi98p/3MdAQpxExEM32+TxCyZtKer3swcVsim8o+pinfAJ2EBK+8cOlHu2u5tWqEoupvondUjXUTp2VOLMe0nh4IC7ngK3viHdcIhQKZwG9nxERNAFEco/3vs5Y1YOqdBhQ=
+  - secure: QKYFPa+BbMeAiTQV2m1yVVI/W0d/Xx7GPzxJy8uBrfYuX2qYWhlVHA6WcUbD0AwXRsVK4FD+IAvrLhFXiVRngbmff50XiC2eYyQlOFblhNOJLsyg/lHMzX7laaYtX33oUNLZEzYtf6AiS69BAClxiNtN7mTmMM2poqJv/GYtuc/zYw/H9GRgo/3bEZZDrnMETD6m5R0hymUllV0G1YZpPNXK4kg9sRFy4ATii/GbFL4Nd9Rv7cLRexVYboXBhKLRoWi9vqba9TO2ZVfoULi7LtDJ71ft3fuc4hNRU751oQbP+33ikkDAOKP+d5s/vXdxjZSMxl/EQ/I4VUsHLQnaM6qMwQaJaBKlBD0BrDTwVmAXLqQefRwZeMQWx4dGY5pfK0YgrWx8O2b9bCTL0aGbZx9KavyBXYGv2uoDw6TSPmc4Z1vLYJghd212sh8Y/xZunM/Q60jRskNXwzCaaqAj6/+rye0rik5NnWF6yPR3qigG4D+bxCVudTVzbugh754qf0YTCaeyeEnMwKfKg3mxwtUdZ5RDKwdP6BDfvrPZuiTNGmZKVGE6UxEzjaDuJuSO1fv53bPHIBiwgOmjOp8QCJJa56IdX01qxigp0qbQHpY8wy0Fx7Y4XRRusW0POPCtdQIbhkS66uQ7NWEIIrZ3PrXvX5WX8gHLMqSmEcpZXwk=
+  - secure: meEbnzn71SggK9/zOYrwCkbbotFY2okaf0FYfWE5dnr3SmNAsqgqnKz5DDFBGk9R3LAYIYdw1dK/9EDxWn532uqY1q5rWCudTiVBpbP32F3uuF05hbkwFXFjjmQesMXkKRDb61f4VSs8+NnMXpOLny09nfeKp3iQ858oKC6NaNKZF/rzkDWS13wMJsWPdx+NIAV0D9seEX951uhXMEqIjTfj6h7vzlug/wzIdKMRmVoaqgJHQlR/uAIvaxworJ1WffgANl9t85qNorCDn06he2a1TGslgTr3RU3D/4w6NNa/0P7+gCrMgNgtdb4l/IXq7Lmkl2jsXIGV+wsIGZS+yorSk8eSuntJ4uFTyXOCOWVYgk1X0VoXLWIj0tsgj50Np3qwyEF3XzgPaKBi6QyjQek9FmW1Z5S29qqSuipcpXNrF/O6ZQJRj9rkQv2mXCkKOCAP7Awmh+TMhv9l+FnQGVr2yFoDsnGITSMVhwTyfv4ZS4z7r5Gk5u2etkeamLIalQR2waQhd0/H9glRD6hMsdQaT/2g1diW2r5z+N412Ga9R0xTKfCEMtLqCA6ymbvgE0J3uCpuV+hlp6zqEPwTw+Gk0L6KsB2/5i2nndrbuo0n/n6xjj2juU7AodLBTE1Y9fJa5QFxqa1kEqNYXtzKQzqN4x8C0ibjF515N1fI6zY=
