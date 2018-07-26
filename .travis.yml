@@ -1,0 +1,19 @@
+sudo: required
+services:
+  - docker
+
+script:
+  - docker-compose build
+
+deloy:
+  - echo "$DOCKER_PASSWORD" | docker login $DOCKER_SERVER -u "$DOCKER_USERNAME" --password-stdin
+  - docker tag microservicedemo/identityserver $DOCKER_SERVER/microservicedemo/identityserver
+  - docker push $DOCKER_SERVER/microservicedemo/identityserver
+  - docker tag microservicedemo/api_gateway $DOCKER_SERVER/microservicedemo/api_gateway
+  - docker push $DOCKER_SERVER/microservicedemo/api_gateway
+  - docker tag microservicedemo/dotnet_service $DOCKER_SERVER/microservicedemo/dotnet_service
+  - docker push $DOCKER_SERVER/microservicedemo/dotnet_service
+  - docker tag microservicedemo/node_service $DOCKER_SERVER/microservicedemo/node_service
+  - docker push $DOCKER_SERVER/microservicedemo/node_service
+  - docker tag microservicedemo/spa_client $DOCKER_SERVER/microservicedemo/spa_client
+  - docker push $DOCKER_SERVER/microservicedemo/spa_client
