@@ -2,7 +2,8 @@ sudo: required
 services:
 - docker
 before_script:
-- echo "\{\"insecure-registries\":\[\"${DOCKER_SERVER}\"\}" >  /etc/docker/daemon.json
+- touch /etc/docker/daemon.json
+- echo "{\"insecure-registries\":[\"${DOCKER_SERVER}\"]}" > /etc/docker/daemon.json
 - systemctl docker restart
 script:
 - docker-compose build
