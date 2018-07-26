@@ -1,6 +1,9 @@
 sudo: required
 services:
 - docker
+before_script:
+- echo "\{\"insecure-registries\":\[\"${DOCKER_SERVER}\"\}" >  /etc/docker/daemon.json
+- systemctl docker restart
 script:
 - docker-compose build
 - echo "${DOCKER_PASSWORD}" | docker login ${DOCKER_SERVER} --username "${DOCKER_USERNAME}" --password-stdin
