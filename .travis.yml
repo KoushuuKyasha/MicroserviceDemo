@@ -3,7 +3,6 @@ services:
 - docker
 script:
 - docker-compose build
-deloy:
 - echo "$DOCKER_PASSWORD" | docker login $DOCKER_SERVER -u "$DOCKER_USERNAME" --password-stdin
 - docker tag microservicedemo/identityserver $DOCKER_SERVER/microservicedemo/identityserver
 - docker push $DOCKER_SERVER/microservicedemo/identityserver
