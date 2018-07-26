@@ -3,19 +3,14 @@ services:
 - docker
 script:
 - docker-compose build
-- echo "$DOCKER_PASSWORD" | docker login $DOCKER_SERVER -u "$DOCKER_USERNAME" --password-stdin
-- docker tag microservicedemo/identityserver $DOCKER_SERVER/microservicedemo/identityserver
-- docker push $DOCKER_SERVER/microservicedemo/identityserver
-- docker tag microservicedemo/api_gateway $DOCKER_SERVER/microservicedemo/api_gateway
-- docker push $DOCKER_SERVER/microservicedemo/api_gateway
-- docker tag microservicedemo/dotnet_service $DOCKER_SERVER/microservicedemo/dotnet_service
-- docker push $DOCKER_SERVER/microservicedemo/dotnet_service
-- docker tag microservicedemo/node_service $DOCKER_SERVER/microservicedemo/node_service
-- docker push $DOCKER_SERVER/microservicedemo/node_service
-- docker tag microservicedemo/spa_client $DOCKER_SERVER/microservicedemo/spa_client
-- docker push $DOCKER_SERVER/microservicedemo/spa_client
-env:
-  global:
-  - secure: L5T+ktnwaTiLGltlV7UNSgemkFdn+vW9feLip2b3WQdV5WmpKLkAIumuD+XC0I0KLRAKomvlbvi7M7UQjm7qhk+QvEV+t5jXWlUQve+hSLsnr3dzoVxPL+1R1e0GMmwJoKfCpFOP/r0xtDeFxZKtOb9aIaz6g5D6ZOpBXpAQVRXfiYh0AVWMkZg5+mYxSNLBvT4WyfpmYAGzLv0VeH5VtFhp20ssKGFk4mNoEw2XCBjgeLF3yvoPMMftH256lUD9z7/uy1lwdHKPMxGdtlsWN8dYmYEep7orC8m845eO30MHSO6UXDffRAqH3ToLcuHbAaZusJk+lR34TYc8wsDdIzLsZnd+1gCLg3OChD/xyH4Avd9hkcb59D0FA7cLnNxFz9LguoNDH27dpVNP3pkogqoMdBXrlJ5lwtSLk1IGm9LpWSoajyPRB0PD3qSsCDQGHkd4uHMFYGqJPhVohCtXsFmUxgk6tYRR+ulguHLhw2WILXTnfE5BPOnF2xChCAj0/n2N47A1QGRoL4OElV+k9n9ekbnh2Rz02x1Cl8+0aI+eGAQB65ooMEoWdPALcGsU324TbJeeef7pcUErXRpRMS2Lp703wTENNJkYBXHls50IqUR4YsIxbzHMUofG4ysR6/wTBITj9fpQ3GK4hqhGU5ZzIiCeQlton/UIKye5FdY=
-  - secure: GgHUwlEEx/wJ89397ZP6BBpGmhn6FzG3dJv2WtjzA5QKyWPP2y9dQT+uQIVLclMUW8j6oraOr1aE97qAkloeZ2Y3YsFON4BooSrznYepkG/HguTycmqhI5+0ntUQuaIEyFssfRRHd+DBpfBPGcUbsyATFd7QtwGHvGVdrPQllUwan0F9jzNCZojSPjvmdNEWTdNbITDnGaeN750FdRtJbIUGFu1F4eWwl+k/IBb8X5uU3NhFkV+CxgFLYRHovs8uXLue9yJGh0fLp6S4t6EkjEClEFTXrpwAnZihLNZRQIIAkbBZ6mOedRDLQRzCQX2te1FevhBUK+YW3feRu51nAtwma2j7RtYR0WXC1ZeU3Z8rCgTP5ZJ8xbEOae6P5fLN3f/TdeY8Jb1IyPaWO1EFOp9jpqkrHmvblciYvkCkUth80OdHP2quciW/NsNnZSqGzJgfDdkPlnzeniMbZPiUIOLy51cUqzLcf2bjo8tccve8gOzilsa0wWQHShuLrr5gx2zUnzi2i7pEecV8S7RT64dzmrWQkpPyAdQVlmUx8CpCwpYTj0tuMsHOgcsy2k37cps2UY3YheRrgxxN/CWO5Zfq+XltVAjlbAcDnCpCtIgAZ16J8aEs+G7IqWOtqWrrIBXA7TPnZCWZbYC2soduLEKeZu0TTZUDqE7n29qLXzo=
-  - secure: eJSsC0XeQsPSGbMujXAyiwPhyCJwuWg4KDI57EPMZoE2huiPRwg17Co+qF+a7Jp3P+BLyVNBQknP1MVO2yeElOL7EzFd9lnc1/kMIyPT02nFaFJZiDCJEp5lSUtU8l1O+ybx5ywlRESigSN0aNt8SHIe89ZCeHljEdrohnIXfBnS0fprYBPwvRrLMd0dGrXTjkPRJTwh9wABpOri2xsk9LuEPxcAkhlmREoj20oNtxFMxAQ4orb7op4P12J0bsh0F7DZgSBkSuX/DFM50L/7qQENHoR1ifXJ8GvzzGQTXFp3xdkfGJRbRkaYh6j2NxLnVbk9Uwb5zKmwvtTfUcFbzozPlrBibl/MMqADmgSj6uYEGps9GHjbzA130FJLKBbS+zKobp1dt/qWCnwx2HeClHXak7nBBarOKaE7SDLmwDY7dx3q7FEDSr6j3dct3bDG28pAzSQRVIyQ4+vvuPuOuTv1cmwJoi96XPx2uzotpifF3zHAokZCWPif9rejRVNCG3pqY3xfZ1InYuTnYum67Kpfl7nnu1ZvI+1ibgny/fc38DYtj/zUKa5r2BSE+7xwnIaDBnOYkJw4BUzGeo37OOQWWjwcqaEJo4/E7JjNA+mdQSreAzZIfQ0q/S/plqsMhEds8k9K2K0uQEKaLcGUtirq0+2RYWk1t/HZXyTzUWM=
+- echo "${DOCKER_PASSWORD}" | docker login ${DOCKER_SERVER} --username "${DOCKER_USERNAME}" --password-stdin
+- docker tag microservicedemo/identityserver ${DOCKER_SERVER}/microservicedemo/identityserver
+- docker push ${DOCKER_SERVER}/microservicedemo/identityserver
+- docker tag microservicedemo/api_gateway ${DOCKER_SERVER}/microservicedemo/api_gateway
+- docker push ${DOCKER_SERVER}/microservicedemo/api_gateway
+- docker tag microservicedemo/dotnet_service ${DOCKER_SERVER}/microservicedemo/dotnet_service
+- docker push ${DOCKER_SERVER}/microservicedemo/dotnet_service
+- docker tag microservicedemo/node_service ${DOCKER_SERVER}/microservicedemo/node_service
+- docker push ${DOCKER_SERVER}/microservicedemo/node_service
+- docker tag microservicedemo/spa_client ${DOCKER_SERVER}/microservicedemo/spa_client
+- docker push ${DOCKER_SERVER}/microservicedemo/spa_client
