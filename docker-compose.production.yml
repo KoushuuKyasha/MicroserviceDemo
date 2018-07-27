@@ -1,0 +1,37 @@
+version: "2"
+
+services: 
+  identity_server:
+    image: ${DOCKER_SERVER}/microservicedemo/identityserver:latest
+    ports:
+      - "5001:80"
+    networks: 
+      - microservice_demonet
+
+  api_gateway:
+    image: ${DOCKER_SERVER}/microservicedemo/api_gateway:latest
+    ports:
+      - "5002:80"
+    networks: 
+      - microservice_demonet
+      
+  
+  dotnet_service:
+    image: ${DOCKER_SERVER}/microservicedemo/dotnet_service:latest
+    networks: 
+      - microservice_demonet
+
+  node_service:
+    image: ${DOCKER_SERVER}/microservicedemo/node_service:latest
+    networks: 
+      - microservice_demonet
+  
+  spa_client:
+    image: ${DOCKER_SERVER}/microservicedemo/spa_client:latest
+    ports: 
+      - "5005:80"
+    networks: 
+      - microservice_demonet
+
+networks: 
+  microservice_demonet:

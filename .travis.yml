@@ -7,6 +7,7 @@ before_script:
 - echo "{\"insecure-registries\":[\"${DOCKER_SERVER}\"]}" > daemon.json
 - sudo cp daemon.json /etc/docker/daemon.json
 - sudo service docker start
+- sudo apt-get install sshpass
 script:
 - docker-compose build
 - echo "${DOCKER_PASSWORD}" | docker login ${DOCKER_SERVER} --username "${DOCKER_USERNAME}" --password-stdin
@@ -20,3 +21,12 @@ script:
 - docker push ${DOCKER_SERVER}/microservicedemo/node_service
 - docker tag microservicedemo/spa_client ${DOCKER_SERVER}/microservicedemo/spa_client
 - docker push ${DOCKER_SERVER}/microservicedemo/spa_client
+after_script:
+- sed -i "s/\${DOCKER_PASSWORD}/${DOCKER_PASSWORD}/g" deploy_script.sh
+- sed -i "s/\${DOCKER_USERNAME}/${DOCKER_USERNAME}/g" deploy_script.sh
+- sed -i "s/\${DOCKER_SERVER}/${DOCKER_SERVER}/g" deploy_script.sh
+- sed -i "s/\${DOCKER_SERVER}/${DOCKER_SERVER}/g" docker-compose.production.yml
+- sshpass -p ${DEPLOY_PASSWORD} ssh ${DEPLOY_USERNAME}@${DEPLOY_SERVER} 'mkdir ~/microservicedemo/'
+- sshpass -p ${DEPLOY_PASSWORD} scp -o stricthostkeychecking=no ./deploy_script.sh ${DEPLOY_USERNAME}@${DEPLOY_SERVER}:~/microservicedemo/deploy_script.sh
+- sshpass -p ${DEPLOY_PASSWORD} scp -o stricthostkeychecking=no ./docker-compose.production.yml ${DEPLOY_USERNAME}@${DEPLOY_SERVER}:~/microservicedemo/docker-compose.production.yml
+- sshpass -p ${DEPLOY_PASSWORD} ssh ${DEPLOY_USERNAME}@${DEPLOY_SERVER} 'cd docker_deployment_demo && ./deploy_script.sh '
