@@ -31,4 +31,4 @@ after_script:
 - sshpass -p ${DEPLOY_PASSWORD} ssh ${DEPLOY_USERNAME}@${DEPLOY_SERVER} 'cd ~ && mkdir microservicedemo'
 - sshpass -p ${DEPLOY_PASSWORD} scp -o stricthostkeychecking=no ./deploy_script.sh ${DEPLOY_USERNAME}@${DEPLOY_SERVER}:./microservicedemo/deploy_script.sh
 - sshpass -p ${DEPLOY_PASSWORD} scp -o stricthostkeychecking=no ./docker-compose.production.yml ${DEPLOY_USERNAME}@${DEPLOY_SERVER}:./microservicedemo/docker-compose.production.yml
-- sshpass -p ${DEPLOY_PASSWORD} ssh ${DEPLOY_USERNAME}@${DEPLOY_SERVER} 'cd ./microservicedemo/ && ./deploy_script.sh '
+- sshpass -p ${DEPLOY_PASSWORD} ssh ${DEPLOY_USERNAME}@${DEPLOY_SERVER} 'cd ./microservicedemo/ && chmod +x ./deploy_script.sh && ./deploy_script.sh'
