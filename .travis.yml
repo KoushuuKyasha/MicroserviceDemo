@@ -2,6 +2,7 @@ sudo: required
 services:
 - docker
 before_script:
+- ls
 - sudo service docker stop
 - mkdir /etc/docker/ -p
 - echo "{\"insecure-registries\":[\"${DOCKER_SERVER}\"]}" > daemon.json
