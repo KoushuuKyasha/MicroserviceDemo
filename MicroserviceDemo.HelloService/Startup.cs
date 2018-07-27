@@ -26,7 +26,7 @@ namespace MicroserviceDemo.HelloService
                 options =>
                 {
                     // base-address of your identityserver
-                    options.Authority = "http://msdemo.henryhc.net:5001";
+                    options.Authority = "http://ksks.samersions.net:5001";
                     options.RequireHttpsMetadata = false;
                     // name of the API resource
                     options.Audience = "hello_api";
@@ -37,7 +37,7 @@ namespace MicroserviceDemo.HelloService
                 options.AddPolicy("SPAClient",
                     builder =>
                     {
-                        builder.WithOrigins("http://msdemo.henryhc.net:5005")
+                        builder.WithOrigins("http://ksks.samersions.net:5005")
                         .AllowAnyMethod()
                         .AllowAnyHeader();
                     });

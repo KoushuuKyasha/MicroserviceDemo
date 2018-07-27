@@ -4,7 +4,7 @@ import { AuthConfig } from "angular-oauth2-oidc/auth.config";
 export const authConfig: AuthConfig = {
 
     // Url of the Identity Provider
-    issuer: 'http://msdemo.henryhc.net:5001',
+    issuer: 'http://ksks.samersions.net:5001',
   
     // URL of the SPA to redirect the user to after login
     redirectUri: window.location.origin,

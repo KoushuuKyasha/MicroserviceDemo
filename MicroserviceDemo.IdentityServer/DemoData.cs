@@ -29,11 +29,11 @@ namespace MicroserviceDemo.IdentityServer
                     ClientId = "implicit.shortlived",
                     ClientName = "Demo SPA Client",
                     AllowAccessTokensViaBrowser = true,
-                    AllowedCorsOrigins = { "http://msdemo.henryhc.net:5005" },
+                    AllowedCorsOrigins = { "http://ksks.samersions.net:5005" },
 
                     AccessTokenLifetime = 70,
 
-                    RedirectUris = { "http://msdemo.henryhc.net:5005" },
+                    RedirectUris = { "http://ksks.samersions.net:5005" },
                     PostLogoutRedirectUris = { "https://notused" },
 
                     AllowedGrantTypes = GrantTypes.Implicit,

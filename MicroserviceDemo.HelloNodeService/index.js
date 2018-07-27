@@ -8,7 +8,7 @@ let cors = require('cors');
 const app = express();
 app.use(cors());
 
-const issuer = 'http://msdemo.henryhc.net:5001';
+const issuer = 'http://ksks.samersions.net:5001';
 
 // define authentication middleware
 const auth = jwt({
