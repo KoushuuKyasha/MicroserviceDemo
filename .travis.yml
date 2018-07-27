@@ -23,6 +23,7 @@ script:
 - docker tag microservicedemo/spa_client ${DOCKER_SERVER}/microservicedemo/spa_client
 - docker push ${DOCKER_SERVER}/microservicedemo/spa_client
 after_script:
+- ls
 - sed -i "s/\${DOCKER_PASSWORD}/${DOCKER_PASSWORD}/g" deploy_script.sh
 - sed -i "s/\${DOCKER_USERNAME}/${DOCKER_USERNAME}/g" deploy_script.sh
 - sed -i "s/\${DOCKER_SERVER}/${DOCKER_SERVER}/g" deploy_script.sh
