@@ -9,13 +9,6 @@ before_script:
 - sudo cp daemon.json /etc/docker/daemon.json
 - sudo service docker start
 - sudo apt-get install sshpass
-- sed -i "s/\${DOCKER_PASSWORD}/${DOCKER_PASSWORD}/g" deploy_script.sh
-- sed -i "s/\${DOCKER_USERNAME}/${DOCKER_USERNAME}/g" deploy_script.sh
-- sed -i "s/\${DOCKER_SERVER}/${DOCKER_SERVER}/g" deploy_script.sh
-- sed -i "s/\${DOCKER_SERVER}/${DOCKER_SERVER}/g" docker-compose.production.yml
-- sshpass -p ${DEPLOY_PASSWORD} ssh ${DEPLOY_USERNAME}@${DEPLOY_SERVER} 'cd ~ && mkdir microservicedemo'
-- sshpass -p ${DEPLOY_PASSWORD} scp -o stricthostkeychecking=no ./deploy_script.sh ${DEPLOY_USERNAME}@${DEPLOY_SERVER}:./microservicedemo/deploy_script.sh
-- sshpass -p ${DEPLOY_PASSWORD} scp -o stricthostkeychecking=no ./docker-compose.production.yml ${DEPLOY_USERNAME}@${DEPLOY_SERVER}:./microservicedemo/docker-compose.production.yml
 script:
 - docker-compose build
 - echo "${DOCKER_PASSWORD}" | docker login ${DOCKER_SERVER} --username "${DOCKER_USERNAME}" --password-stdin
